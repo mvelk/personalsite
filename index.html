@@ -20,22 +20,25 @@
 
       const openModal = () => {
         const signupModal = document.getElementById('signupModal');
-        if (signupModal.classList[signupModal.classList.length - 1] === "hidden") {
-          signupModal.classList.remove("hidden");
+        if (signupModal.classList[signupModal.classList.length - 1] !== "visible") {
+          signupModal.classList.add("visible");
         }
       }
 
       const closeModal = () => {
         const signupModal = document.getElementById('signupModal');
-        if (signupModal.classList[signupModal.classList.length - 1] !== "hidden") {
-          signupModal.classList.add("hidden");
+        if (signupModal.classList[signupModal.classList.length - 1] === "visible") {
+          signupModal.classList.remove("visible");
         }
       }
       document.addEventListener("DOMContentLoaded", () => {
         const signinSignupButton = document.getElementById('signinButton');
         const closeModalButton = document.getElementById('closeModalButton');
+        const modalOverlay = document.getElementById('signupModal');
         signinSignupButton.addEventListener("click", openModal);
+        modalOverlay.addEventListener("click", closeModal);
         closeModalButton.addEventListener("click", closeModal);
+
         window.addEventListener("scroll", yScroll);
       });
     </script>
@@ -44,13 +47,30 @@
     <div id="signupModal" class="overlay hidden">
       <div class="overlay-dialog">
         <div class="overlay-title">
-          Tedium
+          <img src="mlogo.png" />
+          <h1>Code Muse</h1>
         </div>
         <div class="overlay-content">
+          Sign in to Medium to connect with voices and perspectives that matter.
 
         </div>
         <div class="overlay-button-set">
-
+          <a class="oauth-button twitter">
+            <div class="label-group">
+              <span class="oauth-button-label">Continue with Twitter</span>
+              <span class="small-label">We won't post without asking</span>
+            </div>
+          </a>
+          <a class="oauth-button facebook">
+            <div class="label-group">
+              <span class="oauth-button-label">Continue with Facebook</span>
+              <span class="small-label">We won't post without asking</span>
+            </div>
+          </a>
+          <a class="oauth-button google">
+            <span class="oauth-button-label">Continue with Google</span>
+          </a>
+          <a class="green-link email-signin-button">Sign in or sign up with email</a>
         </div>
       </div>
       <a id="closeModalButton" class="button close-modal-button">
@@ -61,7 +81,8 @@
     <header>
       <div id="header-bar" class="full-col">
         <div id="logo">
-          <h1>Tedium</h1>
+          <img src="mlogo.png"/>
+          <h1>Code Muse</h1>
         </div>
         <div id="header-buttons">
           <a id="signinButton" class="button flat-button green-link">Sign In / Sign Up</a>
@@ -89,7 +110,7 @@
         </nav>
       </div>
     </header>
-    <main>
+    <main class="eggshell">
       <div id="hero">
         <div class="hero-container full-col">
           <div id="hero-content">

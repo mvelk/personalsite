@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Tedium</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700|Montserrat:400,700|Open+Sans:300,400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Permanent+Marker" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lora" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <script>
+      const yScroll = () => {
+        let navLinks = document.getElementById('nav-links');
+        if (window.pageYOffset >= 70 && navLinks.classList[navLinks.classList.length - 1] !== "absolutely") {
+          navLinks.classList.add("absolutely");
+        }
+        else if (window.pageYOffset < 70 && navLinks.classList[navLinks.classList.length - 1] === "absolutely") {
+          navLinks.classList.remove("absolutely");
+        }
+      };
+
+      const openModal = () => {
+        const signupModal = document.getElementById('signupModal');
+        if (signupModal.classList[signupModal.classList.length - 1] === "hidden") {
+          signupModal.classList.remove("hidden");
+        }
+      }
+
+      const closeModal = () => {
+        const signupModal = document.getElementById('signupModal');
+        if (signupModal.classList[signupModal.classList.length - 1] !== "hidden") {
+          signupModal.classList.add("hidden");
+        }
+      }
+      document.addEventListener("DOMContentLoaded", () => {
+        const signinSignupButton = document.getElementById('signinButton');
+        const closeModalButton = document.getElementById('closeModalButton');
+        signinSignupButton.addEventListener("click", openModal);
+        closeModalButton.addEventListener("click", closeModal);
+        window.addEventListener("scroll", yScroll);
+      });
+    </script>
+  </head>
+  <body>
+    <header class="no-border">
+      <div id="header-bar" class="full-col">
+        <div id="logo">
+          <img class="more-space-right" src="mlogo.png"/>
+          <div class="article-logo-divider"></div>
+          <h1 class="cursive">Freethink</h1>
+        </div>
+        <div id="header-buttons">
+          <a id="signinButton" class="button flat-button green-link">Sign In / Sign Up</a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <article>
+        <div class="article-head">
+          <img class="avatar big-avatar" src="http://placehold.it/40x40" />
+          <div class="minor-details bigger-padding-left">
+            <div class="details-line1">
+              <a class="dark-grey-link bigger-font">Author Name</a><a class="green-hollow-button">Button Label</a>
+            </div>
+            <div class="details-line2">
+              <span class="smallerest-text">Product guy; iOS developer; former Apple, Netscape, AOL, Sun, HP, Motorola and CEO 3 tech startups</span>
+            </div>
+            <div class="details-line3">
+              <time class="smallerest-text">5 days ago</time>
+              <span>&#183;</span>
+              <span class="smallerest-text">10 minute read</span>
+            </div>
+          </div>
+        </div>
+        <div class="article-body">
+          <img src="https://cdn-images-1.medium.com/max/800/1*o67i_67-5RmQeJvzp0VM7g.gif" />
+          <h1 class="title">Use this simple psychology rule to improve your customer experience</h1>
+          <p>
+            People judge an experience by the most intense point and the end point.
+          </p>
+
+          <p>
+            The judgement is not made from the sum of the entire experience.
+          </p>
+
+          <p>
+            This is called the peak-end rule. It is a psychological heuristic popularized by Nobel Prize winner Daniel Kahneman. He described the concept in a 1993 paper called: “When More Pain Is Preferred to Less: Adding a Better End.”
+          </p>
+
+          <p>
+            Two years ago me and the family went to Hawaii for a week. Flying, rental cars, hotels, beach, pool, activities, eating out. What sticks in my mind after one year? What would I tell someone about the trip if I had to summarize it in one minute. I would say I did this great sunrise bike ride down Haleakala with my daughter and the red-eye plane ride home. There were other things about the trip but those quickly come to mind. A literal peak and sleepless end to the trip. (You get an extra day in Hawaii if you take the red-eye home).
+          </p>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>
