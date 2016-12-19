@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="blogApp">
   <head>
     <meta charset="utf-8">
     <title>Tedium</title>
@@ -7,6 +7,7 @@
     <link href="https://fonts.googleapis.com/css?family=PT+Serif:400,400i,700|Montserrat:400,700|Open+Sans:300,400,600" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
+    <script src="app/frontend/bundle.js"></script>
     <script>
       const yScroll = () => {
         let navLinks = document.getElementById('nav-links');
@@ -70,7 +71,7 @@
           <a class="oauth-button google">
             <span class="oauth-button-label">Continue with Google</span>
           </a>
-          <a class="green-link email-signin-button">Sign in or sign up with email</a>
+          <a class="accent-link email-signin-button">Sign in or sign up with email</a>
         </div>
       </div>
       <a id="closeModalButton" class="button close-modal-button">
@@ -85,7 +86,7 @@
           <h1>Code Muse</h1>
         </div>
         <div id="header-buttons">
-          <a id="signinButton" class="button flat-button green-link">Sign In / Sign Up</a>
+          <a id="signinButton" class="button flat-button accent-link">Sign In / Sign Up</a>
         </div>
       </div>
       <div id="nav-links">
@@ -110,7 +111,7 @@
         </nav>
       </div>
     </header>
-    <main class="eggshell">
+    <main ng-controller="BlogController as blog" class="eggshell">
       <div id="hero">
         <div class="hero-container full-col">
           <div id="hero-content">
@@ -124,31 +125,29 @@
 
       <div id="foreground-container">
         <div id="articles">
-          <article class="card">
+          <article ng-repeat="post in blog.posts" class="card">
             <div class="top-line-details">
-              <img class="avatar" src="http://placehold.it/40x40" />
+              <img class="avatar medium-avatar" src="{{ post.avatarImgLink }}" ng-show="{{ post.avatarImgLink }}" />
               <div class="minor-details">
-                <a class="green-link">Author Name</a> in <a class="green-link">Category Name</a>
+                <a class="accent-link">{{ post.author }}</a> in <a class="accent-link">{{ post.category }}</a>
                 <br />
-                <time class="smallest-text">5 days ago</time>
+                <time class="smallest-text">{{ post.timeSincePublication}}</time>
                 <span>&#183;</span>
-                <span class="smallest-text">10 minute read</span>
+                <span class="smallest-text">{{ post.readTime }}</span>
               </div>
             </div>
             <div class="article-main">
               <img class="article-teaser-image" src="https://d262ilb51hltx0.cloudfront.net/fit/t/1600/480/1*0G5a4Qtnmsa7uJVL0TFyEA.jpeg">
-              <h3 class="article-title">Trump Picks a Retired General for Homeland Security Chief</h3>
-              <!-- <h3 class="article-subtitle">Article subtitle</h3> -->
-              <p>
-                Takeshi called his plan to get a girlfriend, “Operation Fateful Encounter.”
-              </p>
+              <h3 class="article-title">{{ post.title }}</h3>
+              <h3 class="article-subtitle">{{ post.subtitle }}</h3>
+              <div class="teaser" ng-bind-html="post.teaserText | unsafe"></div>
             </div>
             <div class="post-article-read-more">
               <a class="smallest-text grey-link" >Read more...</a>
             </div>
             <div class="bottom-line-strip">
               <div class="favorite-group flex-row-sa-center">
-                <a class="green-icon-button"><i class="material-icons md-icon-22">favorite_border</i></a>
+                <a class="accent-icon-button"><i class="material-icons md-icon-22">favorite_border</i></a>
                 <span class="favorite-count">51</span>
               </div>
               <div class="response-book-group flex-row-sa-center">
@@ -156,75 +155,6 @@
                 <a class="grey-icon-button"><i class="material-icons md-icon-22">bookmark_border</i></a>
               </div>
             </div>
-
-          </article>
-          <article class="card">
-            <div class="top-line-details">
-              <img class="avatar" src="http://placehold.it/40x40" />
-              <div class="minor-details">
-                <a class="green-link">Author Name</a> in <a class="green-link">Category Name</a>
-                <br />
-                <time class="smallest-text">5 days ago</time>
-                <span>&#183;</span>
-                <span class="smallest-text">10 minute read</span>
-              </div>
-            </div>
-            <div class="article-main">
-              <img class="article-teaser-image" src="https://d262ilb51hltx0.cloudfront.net/fit/t/1600/480/1*0G5a4Qtnmsa7uJVL0TFyEA.jpeg">
-              <h3 class="article-title">Trump Picks a Retired General for Homeland Security Chief</h3>
-              <!-- <h3 class="article-subtitle">Article subtitle</h3> -->
-              <p>
-                Takeshi called his plan to get a girlfriend, “Operation Fateful Encounter.”
-              </p>
-            </div>
-            <div class="post-article-read-more">
-              <a class="smallest-text grey-link" >Read more...</a>
-            </div>
-            <div class="bottom-line-strip">
-              <div class="favorite-group flex-row-sa-center">
-                <a class="green-icon-button"><i class="material-icons md-icon-22">favorite_border</i></a>
-                <span class="favorite-count">51</span>
-              </div>
-              <div class="response-book-group flex-row-sa-center">
-                <a class="button flat-button grey-link smaller-text">2 responses</a>
-                <a class="grey-icon-button"><i class="material-icons md-icon-22">bookmark_border</i></a>
-              </div>
-            </div>
-
-          </article>
-          <article class="card">
-            <div class="top-line-details">
-              <img class="avatar" src="http://placehold.it/40x40" />
-              <div class="minor-details">
-                <a class="green-link">Author Name</a> in <a class="green-link">Category Name</a>
-                <br />
-                <time class="smallest-text">5 days ago</time>
-                <span>&#183;</span>
-                <span class="smallest-text">10 minute read</span>
-              </div>
-            </div>
-            <div class="article-main">
-              <img class="article-teaser-image" src="https://d262ilb51hltx0.cloudfront.net/fit/t/1600/480/1*0G5a4Qtnmsa7uJVL0TFyEA.jpeg">
-              <h3 class="article-title">Trump Picks a Retired General for Homeland Security Chief</h3>
-              <!-- <h3 class="article-subtitle">Article subtitle</h3> -->
-              <p>
-                Takeshi called his plan to get a girlfriend, “Operation Fateful Encounter.”
-              </p>
-            </div>
-            <div class="post-article-read-more">
-              <a class="smallest-text grey-link" >Read more...</a>
-            </div>
-            <div class="bottom-line-strip">
-              <div class="favorite-group flex-row-sa-center">
-                <a class="green-icon-button"><i class="material-icons md-icon-22">favorite_border</i></a>
-                <span class="favorite-count">51</span>
-              </div>
-              <div class="response-book-group flex-row-sa-center">
-                <a class="button flat-button grey-link smaller-text">2 responses</a>
-                <a class="grey-icon-button"><i class="material-icons md-icon-22">bookmark_border</i></a>
-              </div>
-            </div>
-
           </article>
         </div>
         <aside id=sidebar>

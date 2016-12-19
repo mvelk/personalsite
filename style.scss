@@ -1,5 +1,18 @@
 @import 'reset.css';
 
+@font-face {
+    font-family: "Montserrat Light";
+    src: url(./assets/fonts/Montserrat-Light.otf);
+}
+
+$primary: #00945C;
+$primary-darker: #007F4F;
+$primary-darkest: #007347;
+$accent-dark: #00915A;
+$accent-medium: #00A868;
+$accent-light: #00BD75;
+$neutral: #fff6e6;
+
 body {
   font-family: 'Open Sans', sans-serif;
   font-size: 16px;
@@ -75,12 +88,12 @@ header {
   box-sizing: border-box;
 }
 
-.green-link {
-  color: #02ac6c;
+.accent-link {
+  color: $primary;
   cursor: pointer;
   transition: .25s color;
   &:hover {
-    color: #1c9963;
+    color: $primary-darker;
   }
 }
 
@@ -123,11 +136,19 @@ article p {
   font-family: 'Lora', serif;
   font-weight: 400;
   font-style: normal;
-  font-size: 18px;
+  font-size: 21px;
   line-height: 1.58;
-  margin-top: 10px;
-  letter-spacing: 0.1px;
+  margin-top: 29px;
+  letter-spacing: 0px;
   color: rgba(0,0,0,0.8);
+}
+
+article p:first-child {
+  margin-top: 10px;
+}
+
+.teaser p {
+  font-size: 18px;
 }
 
 .card {
@@ -166,16 +187,17 @@ article p {
 }
 
 .article-subtitle {
+  font-family: "Montserrat Light";
   margin-top: 5px;
   margin-bottom: 7px;
   font-size: 23px;
   line-height: 1.22;
-  letter-spacing: -0.5px;
+  letter-spacing: -0.8px;
   color: rgba(0,0,0,.44);
 }
 .raised-button {
-  border-color: #02b875;
-  background: #02b875;
+  border-color: $accent-light;
+  background: $accent-light;
   color: white;
   padding: 0 16px;
   font-size: 14px;
@@ -185,8 +207,7 @@ article p {
   text-align: center;
   font-weight: 200;
   transition: .15s background-color,.15s border-color,.15s color,.15s fill;
-
-  &:hover { background-color: #00ab6b; }
+  &:hover { background-color: $accent-medium; }
 }
 
 .hollow-button {
@@ -195,14 +216,14 @@ article p {
   border-radius: 999em;
 }
 
-.green-hollow-button {
+.accent-hollow-button {
   background-color: transparent;
   display: inline-block;
   box-sizing: border-box;
   vertical-align: middle;
   border-radius: 999em;
-  color: #02ac6c;
-  border: 1px solid #02ac6c;
+  color: $primary;
+  border: 1px solid $primary;
   transition: all .25s;
   font-size: 12px;
   height: 19px;
@@ -214,8 +235,8 @@ article p {
   vertical-align: middle;
   &:hover {
     cursor: pointer;
-    color: #1c9963;
-    border-color: #1c9963;
+    color: $primary-darkest;
+    border-color: $primary-darkest;
   }
 }
 
@@ -248,13 +269,27 @@ nav {
 
 #hero {
   height: 400px;
-  background-image: url("./books.jpg");
-  background-size: cover;
+  position: relative;
+  background-image: url("./laptop.png");
+  background-size: fit;
+  // &:after {
+  //   content:"";
+  //   display: block;
+  //   height: 400px;
+  //   width: 100%;
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   z-index: 1;
+  //   background-color: rgba(0, 0, 0, .2);
+  // }
 }
 
 .hero-container {
   max-width: 1000px;
   height: 400px;
+  position: relative;
+  z-index: 2;
 }
 
 #hero-content {
@@ -264,6 +299,7 @@ nav {
 
 .hero-text {
   font-family: 'Montserrat', sans-serif;
+  // text-shadow: 1px 1px 1px rgba(0,0,0,0.8);
   letter-spacing: -0.5px;
   font-size: 28px;
   line-height: 1.4;
@@ -283,6 +319,11 @@ nav {
 .big-avatar {
   width: 60px;
   height: 60px;
+}
+
+.medium-avatar {
+  width: 40px;
+  height: 40px;
 }
 
 .avatar {
@@ -356,21 +397,17 @@ nav {
   font-size: 22px!important;
 }
 
-.md-green {
-
-}
-
 .md-grey {
   color: rgba(0,0,0,0.44);
 }
 
-.green-icon-button {
+.accent-icon-button {
   i {
-    color: #02b875;
+    color: $accent-medium;
     transition: .25s color;
   }
   &:hover i {
-    color: #1c9963;
+    color: $accent-dark;
     cursor: pointer;
   }
 }
